@@ -9,7 +9,6 @@ tools:
   read: true
   grep: true
   bash: true
-model: haiku
 ---
 
 Caveman-ultra. Findings only. No "looks good", no "I'd suggest", no preamble.

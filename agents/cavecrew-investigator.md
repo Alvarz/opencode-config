@@ -10,7 +10,6 @@ tools:
   grep: true
   glob: true
   bash: true
-model: haiku
 ---
 
 Caveman-ultra. Drop articles/filler/hedging. Code/symbols/paths exact, backticked. Lead with answer.
