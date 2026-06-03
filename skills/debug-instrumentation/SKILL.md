@@ -19,7 +19,7 @@ collect runtime facts before fixing unclear bugs.
 2. Start collector when structured local capture is useful:
 
 ```sh
-node skills/debug-instrumentation/scripts/debug-server.mjs --session <bug-name>
+node ~/.config/opencode/skills/debug-instrumentation/scripts/debug-server.mjs --session <bug-name>
 ```
 
 3. Read [scripts/debug-snippets.md](scripts/debug-snippets.md) and choose the
@@ -32,9 +32,14 @@ node skills/debug-instrumentation/scripts/debug-server.mjs --session <bug-name>
    - state mutations
    - error handlers
    - timing-sensitive paths
-5. Ask user to reproduce with exact steps.
-6. Inspect `.opencode/debug/<session>.jsonl`.
+5. Ask user to reproduce with exact steps and then say the bug was reproduced.
+6. Inspect `.opencode/debug/<session>.jsonl` directly from disk. Do not ask the
+   user to copy/paste collector logs.
 7. Remove all instrumentation after verification.
+
+Always tell the user the exact collector command to run after adding
+instrumentation. Include the selected session name and tell them to run it from
+the project root unless using `--dir`.
 
 ## Record Shape
 
@@ -86,7 +91,7 @@ Instrumentation:
 - H2 at <file>: captures <data>.
 
 Run:
-1. Start collector: `node skills/debug-instrumentation/scripts/debug-server.mjs --session <session>`
+1. From the project root, start collector: `node ~/.config/opencode/skills/debug-instrumentation/scripts/debug-server.mjs --session <session>`
 2. Reproduce: <steps>
-3. Share log: `.opencode/debug/<session>.jsonl`
+3. Tell me `reproduced`; I will read `.opencode/debug/<session>.jsonl` directly.
 ```

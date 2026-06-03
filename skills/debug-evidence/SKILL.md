@@ -19,12 +19,14 @@ speculation. If evidence is incomplete, refine instrumentation instead of guessi
 - Bug summary and expected vs actual behavior.
 - Hypotheses from the debug agent.
 - Repro steps used by the user.
-- JSONL records from `.opencode/debug/<session>.jsonl`.
+- JSONL records read directly from `.opencode/debug/<session>.jsonl`.
 - Any stack traces, terminal output, browser console logs, or test failures.
 
 ## Analysis Workflow
 
-1. Read the JSONL file.
+1. Read the JSONL file directly from disk. Do not ask the user to copy/paste
+   collector logs. If the session is unknown, glob `.opencode/debug/*.jsonl` and
+   inspect the newest plausible file; ask for a path only if ambiguous.
 2. Group records by `hypothesisId`, then by `location` and `event`.
 3. Build observed execution path:
    - which events happened
